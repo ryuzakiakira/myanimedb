@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import AnimeList from "../components/AnimeList";
 
 function HomePage() {
-  const [topAnime, setTopAnime] = useState([]);
+  const [seasonalAnime, setSeasonalAnime] = useState([]);
 
   const getTopAnime = async () => {
-    const temp = await fetch("https://api.jikan.moe/v4/top/anime?limit=12");
+    const temp = await fetch("https://api.jikan.moe/v4/seasons/now");
     const anime = await temp.json();
-    setTopAnime(anime.data);
+    setSeasonalAnime(anime.data);
   };
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function HomePage() {
 
   return (
     <main>
-      <AnimeList topAnime={topAnime} />
+      <AnimeList anime={seasonalAnime} pageTitle={"Seasonal Anime"} />
     </main>
   );
 }

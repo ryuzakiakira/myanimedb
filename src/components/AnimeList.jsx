@@ -1,12 +1,12 @@
 import classes from "./AnimeList.module.css";
 import Card from "./Card";
 
-const AnimeList = ({ topAnime }) => {
+const AnimeList = ({ anime, pageTitle }) => {
   return (
     <div className={classes['top-container']}>
-      <h2>Top Anime</h2>
+      <h2>{pageTitle}</h2>
       <div className={classes.main}>
-        {topAnime.map((anime) => (
+        {anime.map((anime) => (
           <Card
             key={anime.mal_id}
             title={anime.title}
