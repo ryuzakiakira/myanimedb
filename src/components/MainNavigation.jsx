@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
+    const hideNavBar = () => {}
+
   return (
     <header>
       <nav>
@@ -63,6 +65,7 @@ function MainNavigation() {
             />
           </label>
         </div>
+        <a href="javascript:void(0);" className={classes.icon} onClick={hideNavBar}>&#9776;</a>
       </nav>
     </header>
   );

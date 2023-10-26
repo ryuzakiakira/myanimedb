@@ -6,12 +6,20 @@ header {
 
 nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   margin: auto;
   max-width: 60rem;
+  overflow: hidden;
+}
+
+a {
+  border: none;
+  padding: 5px;
+  color: #EEEEEE;
+  font-size: large;
+  text-decoration: none;
 }
 
 .center ul {
@@ -21,17 +29,6 @@ nav {
 
 .center ul li {
   margin: auto 10px;
-}
-
-a {
-  border: none;
-  padding: 5px;
-  color: #EEEEEE;
-  font-size: large;
-}
-
-a {
-  text-decoration: none;
 }
 
 a:hover,
@@ -44,4 +41,38 @@ a:hover,
 .right input{
     border-radius: 30px;
     padding: 5px;
+}
+
+.icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .center, .right {
+        display: none;
+    }
+
+    a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .center.responsive, .right.responsive {
+        position: relative;
+    }
+    .center.responsive, .right.responsive, a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .center.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+
 }
