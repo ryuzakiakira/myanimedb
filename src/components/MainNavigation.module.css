@@ -1,0 +1,22 @@
+header {
+    background-color: #ee4f4f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.center ul{
+    list-style: none;
+    display: flex;
+}
+
+.center ul li {
+    margin: auto 10px;
+    padding: 5px;
+}
+
+.center ul li:hover {
+    background-color: #e2cfcf;
+    border-radius: 10px;
+}
