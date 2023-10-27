@@ -5,8 +5,12 @@
 
 .main {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    overflow: auto;
     max-width: 100vw;
+    background-color: #222831;
+    border-radius: 30px;
+    padding: 5px;
 }
 
 .heading {
@@ -15,6 +19,6 @@
 
 @media screen and (min-width: 600px) {
     .top-container {
-        max-width: 60rem;
+        max-width: 70rem;
     }
 }

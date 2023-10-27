@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import AnimeList from "../components/AnimeList";
 import MangaList from "../components/MangaList";
+import LoadingIndicator from "../components/UI/LoadingIndicator";
 
 function HomePage() {
   const [seasonalAnime, setSeasonalAnime] = useState(null);
@@ -35,10 +36,9 @@ function HomePage() {
   }, []);
 
   return (
-    <main style={{ display: "flex" }}>
-      {!seasonalAnime && <h3 style={{margin: 50}}>Anime is loading...</h3>}
-      {seasonalAnime && <AnimeList anime={seasonalAnime} pageTitle={"Seasonal Anime"} />}
-      {!topManga && <h3 style={{margin: 50}}>Manga is Loading...</h3>}
+    <main style={{ display: "flex", flexWrap: "wrap" }}>
+      {!seasonalAnime && !topManga && <LoadingIndicator />}
+      {seasonalAnime && topManga && <AnimeList anime={seasonalAnime} pageTitle={"Seasonal Anime"} />}
       {topManga && <MangaList manga={topManga} pageTitle={"Top Manga"} />}
     </main>
   );

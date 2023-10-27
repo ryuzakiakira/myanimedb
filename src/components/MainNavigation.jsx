@@ -9,7 +9,7 @@ function MainNavigation() {
     <header>
       <nav>
         <div className={classes.left}>
-          <img src="../../public/icon.png" alt="anime waifu" height={50} />
+          <img src="/icon.png" alt="anime waifu" height={50} />
         </div>
         <div className={classes.center}>
           <ul>
