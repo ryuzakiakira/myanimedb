@@ -19,6 +19,8 @@
 
 @media screen and (min-width: 600px) {
     .top-container {
-        max-width: 70rem;
+        max-width: 100vw;
+        padding: 3px;
+        margin-top: 5px;
     }
 }

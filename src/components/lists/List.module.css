@@ -10,6 +10,7 @@
     /* background-color: #222831; */
     border-radius: 30px;
     padding: 5px;
+    justify-content: center;
 }
 
 .heading {
