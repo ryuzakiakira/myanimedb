@@ -8,6 +8,7 @@
     box-shadow: #535861 2px 2px 2px;
     padding: 10px;
     width: 100vw;
+    height: 350px;
 }
 
 .title {
@@ -20,7 +21,8 @@
 
 .image img{
     border-radius: 15px;
-    height: 250px;
+    max-height: 250px;
+    max-width: 200px;
 }
 
 @media screen and (min-width: 600px) {

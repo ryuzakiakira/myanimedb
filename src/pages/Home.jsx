@@ -5,14 +5,14 @@ import MangaList from "../components/lists/MangaList";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
 
 function HomePage() {
-  const [seasonalAnime, setSeasonalAnime] = useState(null);
-  const [topManga, setTopManga] = useState(null);
+  const [anime, setAnime] = useState(null);
+  const [manga, setManga] = useState(null);
 
   const getAnime = async () => {
     try {
-      const temp = await fetch("https://api.jikan.moe/v4/seasons/now");
+      const temp = await fetch("https://api.jikan.moe/v4/seasons/upcoming");
       const anime = await temp.json();
-      setSeasonalAnime(anime.data);
+      setAnime(anime.data);
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +22,7 @@ function HomePage() {
     try {
       const temp = await fetch("https://api.jikan.moe/v4/top/manga?limit=24");
       const manga = await temp.json();
-      setTopManga(manga.data);
+      setManga(manga.data);
     } catch (err) {
       console.log(err);
     }
@@ -37,9 +37,9 @@ function HomePage() {
 
   return (
     <main style={{ display: "flex", flexWrap: "wrap" }}>
-      {!seasonalAnime && !topManga && <LoadingIndicator />}
-      {seasonalAnime && topManga && <AnimeList anime={seasonalAnime} pageTitle={"Seasonal Anime"} />}
-      {topManga && <MangaList manga={topManga} pageTitle={"Top Manga"} />}
+      {!anime && !manga && <LoadingIndicator />}
+      {anime && manga && <AnimeList anime={anime} pageTitle={"Anime"} />}
+      {manga && <MangaList manga={manga} pageTitle={"Manga"} />}
     </main>
   );
 }
