@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 import classes from './Card.module.css';
 
 const Card = (props) => {
     return (
-        <div className={classes.container}>
+        <div className={classes.container} >
             <figure className={classes.image}>
                 <img src={props.img} alt={props.title} />
             </figure>

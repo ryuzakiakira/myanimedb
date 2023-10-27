@@ -2,10 +2,10 @@
 
 ## IN-DEVELOPMENT.
 
-This is supposed to be an Frontend for myanimelist.net. 
+This is supposed to be a readonly Frontend for myanimelist.net. 
 
 This project is not affiliated with myanimelist in anyway. This is just a personal project.
 
-Uses [jikan.moe](https://jikan.moe) API for most of the queries and uses myanimelist v2 api for some.
+Uses [jikan.moe](https://jikan.moe) API for most of the queries.
 
 * nothing has been implemented yet.
