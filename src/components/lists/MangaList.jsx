@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../UI/Card";
 import classes from './MangaList.module.css';
 
 const MangaList = ({ manga, pageTitle }) => {

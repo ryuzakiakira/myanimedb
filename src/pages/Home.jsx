@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import AnimeList from "../components/AnimeList";
-import MangaList from "../components/MangaList";
+import AnimeList from "../components/lists/AnimeList";
+import MangaList from "../components/lists/MangaList";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
 
 function HomePage() {

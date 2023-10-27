@@ -1,5 +1,5 @@
 import classes from "./AnimeList.module.css";
-import Card from "./Card";
+import Card from "../UI/Card";
 
 const AnimeList = ({ anime, pageTitle }) => {
   return (
