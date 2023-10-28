@@ -37,7 +37,7 @@ function HomePage() {
 
   return (
     <main style={{ display: "flex", flexWrap: "wrap" }}>
-      {!anime && !manga && <LoadingIndicator />}
+      {!manga && <LoadingIndicator />}
       {anime && manga && <AnimeList anime={anime} pageTitle={"Anime"} />}
       {manga && <MangaList manga={manga} pageTitle={"Manga"} />}
     </main>
