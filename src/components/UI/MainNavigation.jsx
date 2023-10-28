@@ -9,7 +9,14 @@ function MainNavigation() {
     <header>
       <nav>
         <div className={classes.left}>
-          <img src="/icon.png" alt="anime waifu" height={50} />
+        <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  isActive ? classes.active : "undefined"
+                }
+              >
+                <img src="/icon.png" alt="anime waifu" height={50} />
+              </NavLink>
         </div>
         <div className={classes.center}>
           <ul>
