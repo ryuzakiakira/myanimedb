@@ -16,23 +16,20 @@ const router = createBrowserRouter([
         path: "anime",
         element: <AnimePage />,
         loader: animeLoader,
-        children: [
-          {
-            path: ":animeId",
-            children: [{ index: true, element: <DetailsPage /> }],
-          },
-        ],
+      },
+      {
+        path: "anime/:animeId",
+        element: <DetailsPage />,
       },
       {
         path: "manga",
         element: <MangaPage />,
         loader: mangaLoader,
-        children: [
-          {
-            path: ":mangaId",
-            children: [{ index: true, element: <DetailsPage /> }],
-          },
-        ],
+      },
+      {
+        path: "manga/:mangaId",
+        element: <DetailsPage />,
+
       },
       { path: "results", element: <Results /> },
     ],

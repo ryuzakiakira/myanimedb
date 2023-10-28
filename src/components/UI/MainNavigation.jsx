@@ -55,7 +55,7 @@ function MainNavigation() {
             />
           </label>
         </div>
-        <a href="javascript:void(0);" className={classes.icon} onClick={hideNavBar}>&#9776;</a>
+        <a href="#" className={classes.icon} onClick={hideNavBar}>&#9776;</a>
       </nav>
     </header>
   );

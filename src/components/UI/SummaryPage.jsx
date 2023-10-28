@@ -1,7 +1,8 @@
 import classes from './SummaryPage.module.css';
 
-function SummaryPage() {
-    return <h1>summary</h1>
+function SummaryPage({ data }) {
+    console.log(data);
+    return <h1>{data.title}</h1>
 }
 
 export default SummaryPage;
