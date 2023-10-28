@@ -50,6 +50,12 @@
         grid-template-columns: 1fr 5fr;
         grid-template-rows: auto;
         justify-items: center;
+        margin-top: 2rem;
+    }
+
+    .card {
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
 
     .synopsis {
@@ -67,5 +73,5 @@
         align-content: center;
         text-align: center;
     }
-    
+
 }

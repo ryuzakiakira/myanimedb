@@ -42,7 +42,9 @@ function SummaryPage({ data }) {
 
   return (
     <main className={classes["top-container"]}>
-      <Card title={data.title} img={data.images.jpg.image_url} />
+      <div className={classes.card}>
+        <Card title={data.title} img={data.images.jpg.image_url} />
+      </div>
       {content}
       <div className={classes.synopsis}>
         <h2>Synopsis</h2>
