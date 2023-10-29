@@ -41,8 +41,8 @@ function DetailsPage() {
     return (
         <>
             {!manga && !anime && <LoadingIndicator />}
-            {manga && !anime && <SummaryPage data={manga} />}
-            {anime && !manga && <SummaryPage data={anime} />}
+            {manga && !anime && <SummaryPage data={manga} id={mangaId} />}
+            {anime && !manga && <SummaryPage data={anime} id={animeId} />}
         </>
     )
 }

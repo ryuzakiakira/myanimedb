@@ -74,4 +74,12 @@
         text-align: center;
     }
 
+    .sites {
+        position: relative;
+    }
+
+    .recommendation {
+        max-width: 100rem;
+    }
+
 }
