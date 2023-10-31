@@ -38,6 +38,7 @@ function DetailsPage() {
             getAnime();
         }
     }, [mangaId, animeId])
+    
     return (
         <>
             {!manga && !anime && <LoadingIndicator />}

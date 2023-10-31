@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 
 import Card from "./Card";
 import classes from "./SummaryPage.module.css";
-import AnimeList from "../lists/AnimeList";
-import MangaList from "../lists/MangaList";
+import ContentList from "../lists/ContentList";
 
 function SummaryPage({ data, id }) {
   const location = useLocation();
@@ -18,7 +17,6 @@ function SummaryPage({ data, id }) {
       const temp = await fetch(`https://api.jikan.moe/v4/anime/${id}/recommendations`);
       const animeRecommendation = await temp.json();
       setAnimeRecommendation(animeRecommendation.data);
-      console.log(id);
     } catch (err) {
       console.error("Something went wrong", err);
     }
@@ -44,9 +42,6 @@ function SummaryPage({ data, id }) {
     }
   }, [id])
 
-  console.log(animeRecommendation);
-
-
   let content;
 
   if (isMangaRoute) {
@@ -65,13 +60,14 @@ function SummaryPage({ data, id }) {
         <div className={classes.details}>{data.type}</div>
         <div className={classes.details}>Score: {data.score}</div>
         <div className={classes.details}>
-          <a href={data.serializations[0].url}>{data.serializations[0].name}</a>
+          {data.serializations && <a href={data.serializations[0].url}>{data.serializations[0].name}</a>}
+          {!data.serializations && <a href='#'>UNKNOWN</a>}
         </div>
         <div className={classes.details}>{data.status}</div>
       </>
     );
-  }
-
+  } 
+  
   if (!isMangaRoute) {
     content = (
       <>
@@ -125,8 +121,8 @@ function SummaryPage({ data, id }) {
         </ul>
       </div>
       <div className={classes.recommendation}>
-        {isMangaRoute && <MangaList manga={mangaRecommendation} pageTitle={'Recommendations'} />}
-        {!isMangaRoute && <AnimeList anime={animeRecommendation} pageTitle={'Recommendations'} />}
+        {isMangaRoute && <ContentList contents={mangaRecommendation} pageTitle={'Recommendations'} />}
+        {!isMangaRoute && <ContentList contents={animeRecommendation} pageTitle={'Recommendations'} />}
       </div>
     </main>
   );
