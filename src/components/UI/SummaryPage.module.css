@@ -11,6 +11,7 @@
     margin: 5px;
     border-radius: 20px;
     color: #eeeeee;
+    align-self: flex-end;
 }
 
 .synopsis h2 {
@@ -44,42 +45,27 @@
     border-radius: 20px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
     .top-container {
-        display: grid;
-        grid-template-columns: 1fr 5fr;
-        grid-template-rows: auto;
-        justify-items: center;
-        margin-top: 2rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .card {
-        grid-column-start: 1;
-        grid-column-end: 3;
+        width: 70%;
+        align-self: flex-start;
     }
 
     .synopsis {
-        grid-column-start: 2;
-        grid-column-end: 3;
-        grid-row-start: 2;
-        grid-row-end: 6;
-        align-self: flex-end;
-        /* grid-row-end: 3; */
+        width: 100%; 
     }
 
     .details {
-        grid-column-start: 1;
-        width: 250px;
-        align-content: center;
-        text-align: center;
-    }
-
-    .sites {
-        position: relative;
+        width: auto; 
+        align-self: center;
     }
 
     .recommendation {
-        max-width: 100rem;
+        width: 100%; 
     }
-
 }
