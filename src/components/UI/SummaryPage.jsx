@@ -35,7 +35,7 @@ function SummaryPage({ data, id }) {
   useEffect(() => {
     if (isMangaRoute) {
       getMangaRecommendation(id);
-    } 
+    }
 
     if (!isMangaRoute) {
       getAnimeRecommendation(id);
@@ -66,8 +66,8 @@ function SummaryPage({ data, id }) {
         <div className={classes.details}>{data.status}</div>
       </>
     );
-  } 
-  
+  }
+
   if (!isMangaRoute) {
     content = (
       <>
@@ -121,8 +121,8 @@ function SummaryPage({ data, id }) {
         </ul>
       </div>
       <div className={classes.recommendation}>
-        {isMangaRoute && <ContentList contents={mangaRecommendation} pageTitle={'Recommendations'} />}
-        {!isMangaRoute && <ContentList contents={animeRecommendation} pageTitle={'Recommendations'} />}
+        {isMangaRoute && mangaRecommendation && <ContentList contents={mangaRecommendation} pageTitle={'Recommendations'} />}
+        {!isMangaRoute && animeRecommendation && <ContentList contents={animeRecommendation} pageTitle={'Recommendations'} />}
       </div>
     </main>
   );

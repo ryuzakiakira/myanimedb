@@ -1,14 +1,17 @@
 import { useLocation } from "react-router-dom";
-
+import List from "../components/lists/List";
+import { Suspense } from "react";
+import LoadingIndicator from "../components/UI/LoadingIndicator";
 
 function Results() {
   const location = useLocation();
-  const data = location.state;
+  const data = location.state.data;
 
   console.log(data);
-
   return (
-    <div>Results</div>
+    <Suspense fallback={<LoadingIndicator />}>
+      <List list={data} /> 
+    </Suspense>
   )
 }
 
