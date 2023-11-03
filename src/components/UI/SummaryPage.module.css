@@ -11,7 +11,6 @@
     margin: 5px;
     border-radius: 20px;
     color: #eeeeee;
-    align-self: flex-end;
 }
 
 .synopsis h2 {
@@ -45,7 +44,33 @@
     border-radius: 20px;
 }
 
+.top-relations-container {
+    width: 100vw;
+    margin: auto;
+}
+
+.relations {
+    display: flex;
+    overflow: auto;
+}
+
+.relation_container {
+    background-color: #393E46;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    max-width: fit-content;
+    min-width: 250px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.relations h2{
+    color: #eeeeee;
+}
+
 @media screen and (max-width: 600px) {
+
     .top-container {
         flex-direction: column;
         align-items: center;
@@ -53,11 +78,17 @@
 
     .card {
         width: 70%;
-        align-self: flex-start;
+        align-self: center;
     }
 
     .synopsis {
-        width: 100%; 
+        width: 90%; 
+    }
+
+    .details-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .details {
@@ -66,6 +97,28 @@
     }
 
     .recommendation {
-        width: 100%; 
+        width: 90%; 
+    }
+
+    /* .genres, .sites {
+        flex-direction: column; 
+        align-items: center;
+    } */
+
+    /* .genre, .site {
+        width: 90%; 
+    } */
+
+    .top-relations-container {
+        width: 100vw; 
+        margin: auto;
+    }
+
+    .relations {
+        flex-direction: column; 
+    }
+
+    .relation_container {
+        width: 90%; 
     }
 }
