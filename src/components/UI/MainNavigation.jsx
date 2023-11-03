@@ -18,7 +18,7 @@ function MainNavigation() {
       const temp2 = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&order_by=rank&sort=asc&limit=20`);
       const manga = await temp1.json();
       const anime = await temp2.json();
-      const searchResults = [...manga.data, ...anime.data];
+      const searchResults = [...anime.data, ...manga.data];
       setFetchedData(searchResults);
     } catch (error) {
       console.error("Error fetching data:", error);
