@@ -17,7 +17,7 @@ nav {
 a {
   border: none;
   padding: 5px;
-  color: #EEEEEE;
+  color: #eeeeee;
   font-size: large;
   text-decoration: none;
 }
@@ -34,45 +34,52 @@ a {
 a:hover,
 .active {
   border-radius: 10px;
-  font-weight:bolder;
+  font-weight: bolder;
   text-decoration: underline;
 }
 
-.right input{
-    border-radius: 30px;
-    padding: 5px;
+.right input {
+  border-radius: 30px;
+  padding: 5px;
 }
 
-.icon {
+.icon,
+.dropdown {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .center ul,
+  .searchField {
     display: none;
-}
+  }
 
-@media screen and (max-width: 600px) {
-    .center, .right {
-        display: none;
-    }
+  .icon {
+    display: block;
+  }
+  .dropdown {
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #222831;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+  }
 
-    a.icon {
-        float: right;
-        display: block;
-    }
-}
+  .dropdown ul {
+    list-style: none;
+    padding: 0;
+  }
 
-@media screen and (max-width: 600px) {
-    .center.responsive, .right.responsive {
-        position: relative;
-    }
-    .center.responsive, .right.responsive, a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+  .dropdown ul li {
+    padding: 10px;
+    text-align: center;
+  }
 
-    .center.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-
-
+  .dropdown ul li a {
+    color: #eeeeee;
+    text-decoration: none;
+  }
 }

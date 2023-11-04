@@ -46,7 +46,7 @@
 
 .top-relations-container {
     width: 100vw;
-    margin: auto;
+    margin: auto 50%;
 }
 
 .relations {
@@ -99,15 +99,6 @@
     .recommendation {
         width: 90%; 
     }
-
-    /* .genres, .sites {
-        flex-direction: column; 
-        align-items: center;
-    } */
-
-    /* .genre, .site {
-        width: 90%; 
-    } */
 
     .top-relations-container {
         width: 100vw; 
