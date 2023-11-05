@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
-import HomePage from "./pages/Home";
+import HomePage, { loader as currentlyAiringAnime } from "./pages/Home";
 import Results from "./pages/Results";
 import AnimePage, { loader as animeLoader } from "./pages/Anime";
 import MangaPage, { loader as mangaLoader } from "./pages/Manga";
@@ -11,7 +11,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
+      { 
+        index: true,
+        element: <HomePage />,
+        loader: currentlyAiringAnime
+      },
       {
         path: "anime",
         element: <AnimePage />,
@@ -29,7 +33,6 @@ const router = createBrowserRouter([
       {
         path: "manga/:mangaId",
         element: <DetailsPage />,
-
       },
       {
         path: "results",
