@@ -65,8 +65,8 @@ function SummaryPage({ data, id }) {
         <div className={classes.details}>Score: {data.score}</div>
         <div className={classes.details}>
           {data.serializations && (
-            <a href={data.serializations[0].url}>
-              {data.serializations[0].name}
+            <a href={data.serializations[0] ? data.serializations[0].url : '#'}>
+              {data.serializations[0] ? data.serializations[0].name : 'UNKNOWN'}
             </a>
           )}
           {!data.serializations && <a href="#">UNKNOWN</a>}
