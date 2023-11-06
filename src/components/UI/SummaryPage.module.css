@@ -21,6 +21,12 @@
     content: " :";
 }
 
+.synopsis-top-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
 .synopsis {
     background-color: #393E46;
     margin: 10px;
