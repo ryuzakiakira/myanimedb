@@ -8,8 +8,7 @@ function SummaryPage({ data, id }) {
   const location = useLocation();
   const isMangaRoute = location.pathname.includes("/manga");
 
-  const [animeRecommendation, setAnimeRecommendation] = useState([]);
-  const [mangaRecommendation, setMangaRecommendation] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
 
   console.log(id);
 
@@ -21,9 +20,9 @@ function SummaryPage({ data, id }) {
       const recommendation = await temp.json();
 
       if (type === "anime") {
-        setAnimeRecommendation(recommendation.data);
+        setRecommendation(recommendation.data);
       } else if (type === "manga") {
-        setMangaRecommendation(recommendation.data);
+        setRecommendation(recommendation.data);
       }
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -64,19 +63,15 @@ function SummaryPage({ data, id }) {
   };
 
   const renderRecommendation = () => {
-    const recommendationData = isMangaRoute
-      ? mangaRecommendation
-      : animeRecommendation;
-
-    if (recommendationData.length === 0) {
+    if (!recommendation || recommendation.length === 0) {
       return;
     }
 
     return (
       <div className={classes.recommendation}>
-        {recommendationData && (
+        {recommendation && (
           <ContentList
-            contents={recommendationData}
+            contents={recommendation}
             pageTitle={"Recommendations"}
           />
         )}
