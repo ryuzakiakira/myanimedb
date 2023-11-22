@@ -10,8 +10,6 @@ function SummaryPage({ data, id }) {
 
   const [recommendation, setRecommendation] = useState([]);
 
-  console.log(id);
-
   const fetchData = async (id, type) => {
     try {
       const temp = await fetch(
@@ -103,7 +101,6 @@ function SummaryPage({ data, id }) {
       </div>
       <div className={classes["top-relations-container"]}>
         <div className={classes.relations}>
-          {console.log(data.relations)}
           {data.relations.map((relation) => (
             <div
               className={classes["relation_container"]}
