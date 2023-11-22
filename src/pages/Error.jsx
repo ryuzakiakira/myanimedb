@@ -6,8 +6,8 @@ import MainNavigation from "../components/UI/MainNavigation";
 function ErrorPage() {
     const error = useRouteError();
 
-    let title = "Somthing went wrong!";
-    let message = "Something unexpected happended, please try again."
+    let title = "Something went wrong!";
+    let message = "Something unexpected happened, please try again."
 
     if (error.status === 404) {
         title = "404 Page not found!"
@@ -16,7 +16,7 @@ function ErrorPage() {
 
     return (
         <>
-            <MainNavigation />\
+            <MainNavigation />
             <PageContent title={title} >
                 <p>{message}</p>
             </PageContent>
