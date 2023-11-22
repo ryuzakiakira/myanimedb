@@ -1,6 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import Card from "./Card";
 import classes from "./SummaryPage.module.css";
 import ContentList from "../lists/ContentList";
@@ -12,96 +11,85 @@ function SummaryPage({ data, id }) {
   const [animeRecommendation, setAnimeRecommendation] = useState([]);
   const [mangaRecommendation, setMangaRecommendation] = useState([]);
 
-  const getAnimeRecommendation = async (id) => {
-    try {
-      const temp = await fetch(
-        `https://api.jikan.moe/v4/anime/${id}/recommendations`
-      );
-      const animeRecommendation = await temp.json();
-      setAnimeRecommendation(animeRecommendation.data);
-    } catch (err) {
-      console.error("Something went wrong", err);
-    }
-  };
+  console.log(id);
 
-  const getMangaRecommendation = async (id) => {
+  const fetchData = async (id, type) => {
     try {
       const temp = await fetch(
-        `https://api.jikan.moe/v4/manga/${id}/recommendations`
+        `https://api.jikan.moe/v4/${type}/${id}/recommendations`
       );
-      const mangaRecommendation = await temp.json();
-      setMangaRecommendation(mangaRecommendation.data);
+      const recommendation = await temp.json();
+
+      if (type === "anime") {
+        setAnimeRecommendation(recommendation.data);
+      } else if (type === "manga") {
+        setMangaRecommendation(recommendation.data);
+      }
     } catch (err) {
-      console.error("Something went wrong", err);
+      console.error("Error fetching data:", err);
     }
   };
 
   useEffect(() => {
-    if (isMangaRoute) {
-      getMangaRecommendation(id);
-    }
+    const type = isMangaRoute ? "manga" : "anime";
+    fetchData(id, type);
+  }, [id, isMangaRoute]);
 
-    if (!isMangaRoute) {
-      getAnimeRecommendation(id);
-    }
-  }, [id]);
+  const renderDetails = () => {
+    const details = data.studios?.[0] ||
+      data.authors?.[0] || { name: "UNKNOWN", url: "#" };
 
-  let content;
+    return (
+      <div className={classes.details} key={details?.mal_id}>
+        <a href={details?.url}>{details?.name}</a>
+      </div>
+    );
+  };
 
-  if (isMangaRoute) {
-    content = (
+  const renderContent = () => {
+    return (
       <div className={classes["details-container"]}>
-        {data.authors[0] && (
-          <div className={classes.details} key={data.authors[0].mal_id}>
-            <a href={data.authors[0].url}>{data.authors[0].name}</a>
-          </div>
+        {isMangaRoute ? (
+          renderDetails()
+        ) : (
+          <div className={classes.details}>Source: {data.source}</div>
         )}
-        {!data.authors[0] && (
-          <div className={classes.details} key={"1"}>
-            <a href="#">UNKNOWN</a>
-          </div>
-        )}
-        <div className={classes.details}>{data.type}</div>
         <div className={classes.details}>Score: {data.score}</div>
-        <div className={classes.details}>
-          {data.serializations && (
-            <a href={data.serializations[0] ? data.serializations[0].url : "#"}>
-              {data.serializations[0] ? data.serializations[0].name : "UNKNOWN"}
-            </a>
-          )}
-        </div>
+        {isMangaRoute ? null : (
+          <div className={classes.details}>Episodes: {data.episodes}</div>
+        )}
         <div className={classes.details}>{data.status}</div>
       </div>
     );
-  }
+  };
 
-  if (!isMangaRoute) {
-    content = (
-      <div className={classes["details-container"]}>
-        {data.studios[0] && (
-          <div className={classes.details} key={data.studios[0].mal_id}>
-            <a href={data.studios[0].url}>{data.studios[0].name}</a>
-          </div>
+  const renderRecommendation = () => {
+    const recommendationData = isMangaRoute
+      ? mangaRecommendation
+      : animeRecommendation;
+
+    if (recommendationData.length === 0) {
+      return;
+    }
+
+    return (
+      <div className={classes.recommendation}>
+        {recommendationData && (
+          <ContentList
+            contents={recommendationData}
+            pageTitle={"Recommendations"}
+          />
         )}
-        {!data.studios[0] && (
-          <div className={classes.details} key={"1"}>
-            <a href="#">UNKNOWN</a>
-          </div>
-        )}
-        <div className={classes.details}>Source: {data.source}</div>
-        <div className={classes.details}>Score: {data.score}</div>
-        <div className={classes.details}>Episodes: {data.episodes}</div>
-        <div className={classes.details}>{data.status}</div>
       </div>
     );
-  }
+  };
 
   return (
     <main className={classes["top-container"]}>
       <div className={classes.card}>
         <Card title={data.title} img={data.images.jpg.image_url} />
       </div>
-      {content}
+      {renderContent()}
       <div className={classes["synopsis-top-container"]}>
         <div className={classes.synopsis}>
           <h2>Synopsis</h2>
@@ -120,6 +108,7 @@ function SummaryPage({ data, id }) {
       </div>
       <div className={classes["top-relations-container"]}>
         <div className={classes.relations}>
+          {console.log(data.relations)}
           {data.relations.map((relation) => (
             <div
               className={classes["relation_container"]}
@@ -157,20 +146,7 @@ function SummaryPage({ data, id }) {
           ))}
         </ul>
       </div>
-      <div className={classes.recommendation}>
-        {isMangaRoute && mangaRecommendation && (
-          <ContentList
-            contents={mangaRecommendation}
-            pageTitle={"Recommendations"}
-          />
-        )}
-        {!isMangaRoute && animeRecommendation && (
-          <ContentList
-            contents={animeRecommendation}
-            pageTitle={"Recommendations"}
-          />
-        )}
-      </div>
+      {renderRecommendation()}
     </main>
   );
 }

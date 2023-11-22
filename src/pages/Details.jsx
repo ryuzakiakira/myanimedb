@@ -17,6 +17,7 @@ function DetailsPage() {
             const temp = await fetch(`https://api.jikan.moe/v4/manga/${mangaId}/full`);
             const manga = await temp.json();
             setManga(manga.data);
+            setAnime(null);
         } catch (err) {
             throw new Error('Something went wrong', err);
         } finally {
@@ -30,6 +31,7 @@ function DetailsPage() {
             const temp = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/full`);
             const anime = await temp.json();
             setAnime(anime.data);
+            setManga(null);
         } catch (err) {
             throw new Error('Something went wrong', err);
         } finally {
