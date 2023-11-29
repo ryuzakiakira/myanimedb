@@ -42,12 +42,23 @@
     align-items: center;
 }
 
-.genre, .site {
+.genre, .site, button {
     list-style: none;
     background-color: #393E46;
     padding: 10px;
     margin: 5px;
     border-radius: 20px;
+}
+
+button {
+    border: none;
+    color: #eeeeee;
+    padding: 10px;
+    font-size: medium;
+}
+
+button:hover {
+    background-color: #49525f;
 }
 
 .top-relations-container {

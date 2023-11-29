@@ -6,6 +6,7 @@ import Results from "./pages/Results";
 import AnimePage, { loader as animeLoader } from "./pages/Anime";
 import MangaPage, { loader as mangaLoader } from "./pages/Manga";
 import DetailsPage from "./pages/Details";
+import AnimeList from "./pages/AnimeList";
 
 const router = createBrowserRouter([
   {
@@ -13,10 +14,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { 
+      {
         index: true,
         element: <HomePage />,
-        loader: currentlyAiringAnime
+        loader: currentlyAiringAnime,
       },
       {
         path: "anime",
@@ -40,12 +41,18 @@ const router = createBrowserRouter([
         path: "results",
         element: <Results />,
       },
+      {
+        path: "list",
+        element: <AnimeList />
+      }
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+      <RouterProvider router={router} />
+  );
 }
 
 export default App;

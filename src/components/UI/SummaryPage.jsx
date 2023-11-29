@@ -1,5 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToList, removeFromList } from "../../features/lists/animeListSlice";
 import Card from "./Card";
 import classes from "./SummaryPage.module.css";
 import ContentList from "../lists/ContentList";
@@ -7,8 +9,11 @@ import ContentList from "../lists/ContentList";
 function SummaryPage({ data, id }) {
   const location = useLocation();
   const isMangaRoute = location.pathname.includes("/manga");
+  const dispatch = useDispatch();
 
   const [recommendation, setRecommendation] = useState([]);
+  const [buttonText, setButtonText] = useState("Add To List");
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   const fetchData = async (id, type) => {
     try {
@@ -60,6 +65,26 @@ function SummaryPage({ data, id }) {
     );
   };
 
+  const listHandler = (e) => {
+    e.preventDefault();
+    const newItem = { id, type: data.type, title: data.title };
+
+    if (!buttonClicked) {
+      dispatch(addToList(newItem));
+      setButtonText("Remove from list");
+      setButtonClicked(true);
+    }
+
+    if (buttonClicked) {
+      dispatch(removeFromList({id: newItem.id}));
+      setButtonText("Add to list");
+      setButtonClicked(false);
+    }
+
+    console.log(data);
+    
+  };
+
   const renderRecommendation = () => {
     if (!recommendation || recommendation.length === 0) {
       return;
@@ -83,6 +108,7 @@ function SummaryPage({ data, id }) {
         <Card title={data.title} img={data.images.jpg.image_url} />
       </div>
       {renderContent()}
+      <button onClick={listHandler}>{buttonText}</button>
       <div className={classes["synopsis-top-container"]}>
         <div className={classes.synopsis}>
           <h2>Synopsis</h2>

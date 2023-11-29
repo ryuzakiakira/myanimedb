@@ -111,6 +111,16 @@ function MainNavigation() {
                 Manga
               </NavLink>
             </li>
+            <li>
+            <NavLink
+                to={"list"}
+                className={({ isActive }) =>
+                  isActive ? classes.active : "undefined"
+                }
+              >
+                List
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className={classes.right}>
