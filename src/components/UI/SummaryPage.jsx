@@ -1,6 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToList, removeFromList } from "../../features/lists/animeListSlice";
 import Card from "./Card";
 import classes from "./SummaryPage.module.css";
@@ -10,6 +10,7 @@ function SummaryPage({ data, id }) {
   const location = useLocation();
   const isMangaRoute = location.pathname.includes("/manga");
   const dispatch = useDispatch();
+  const animeList = useSelector(state => state.list);
 
   const [recommendation, setRecommendation] = useState([]);
   const [buttonText, setButtonText] = useState("Add To List");
@@ -35,7 +36,9 @@ function SummaryPage({ data, id }) {
   useEffect(() => {
     const type = isMangaRoute ? "manga" : "anime";
     fetchData(id, type);
-  }, [id, isMangaRoute]);
+
+    setButtonClicked(animeList.some(anime => anime.id === id));
+  }, [id, isMangaRoute, animeList]);
 
   const renderDetails = () => {
     const details = data.studios?.[0] ||
@@ -67,7 +70,7 @@ function SummaryPage({ data, id }) {
 
   const listHandler = (e) => {
     e.preventDefault();
-    const newItem = { id, type: data.type, title: data.title };
+    const newItem = { id, type: data.type, title: data.title, img: data.images.jpg.image_url };
 
     if (!buttonClicked) {
       dispatch(addToList(newItem));
@@ -80,8 +83,6 @@ function SummaryPage({ data, id }) {
       setButtonText("Add to list");
       setButtonClicked(false);
     }
-
-    console.log(data);
     
   };
 

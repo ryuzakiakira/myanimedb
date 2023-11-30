@@ -16,8 +16,9 @@ export const animeListSlice = createSlice({
         addToList: (state, action) => {
             const listItem = {
                 id: action.payload.id,
-                anime: action.payload.title,
-                type: action.payload.type
+                title: action.payload.title,
+                type: action.payload.type,
+                img: action.payload.img
             }
             state.list.push(listItem);
         },

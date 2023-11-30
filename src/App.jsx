@@ -6,7 +6,7 @@ import Results from "./pages/Results";
 import AnimePage, { loader as animeLoader } from "./pages/Anime";
 import MangaPage, { loader as mangaLoader } from "./pages/Manga";
 import DetailsPage from "./pages/Details";
-import AnimeList from "./pages/AnimeList";
+import Lists from "./pages/Lists";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "list",
-        element: <AnimeList />
+        element: <Lists />
       }
     ],
   },
