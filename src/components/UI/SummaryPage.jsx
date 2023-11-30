@@ -13,7 +13,7 @@ function SummaryPage({ data, id }) {
   const animeList = useSelector(state => state.list);
 
   const [recommendation, setRecommendation] = useState([]);
-  const [buttonText, setButtonText] = useState("Add To List");
+  const [buttonText, setButtonText] = useState("Add to list");
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const fetchData = async (id, type) => {
@@ -37,7 +37,13 @@ function SummaryPage({ data, id }) {
     const type = isMangaRoute ? "manga" : "anime";
     fetchData(id, type);
 
-    setButtonClicked(animeList.some(anime => anime.id === id));
+    const isButtonClicked = animeList.some(anime => anime.id === id);
+    setButtonClicked(isButtonClicked);
+
+    if (isButtonClicked) {
+      setButtonText("Remove from list");
+    } 
+
   }, [id, isMangaRoute, animeList]);
 
   const renderDetails = () => {
