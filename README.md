@@ -62,7 +62,6 @@ If you encounter any issues or have suggestions, please [open an issue](https://
 ### Known Bugs
 As the sole developer of MyAnimeDB, I am aware that the application currently has some bugs. While I am actively working to address them, please bear with me as I manage this project independently.
 
-- **[When adding to list the button doesn't show feedback properly]**: When adding an anime to list the button changes from "Add to List" to "Remove From List" but when you change tab or look for another show and come back to the show you just added the button reverts back to "Add to list".
 - **[On mobile the hamburger menu is a mess]**
 
 Your understanding and patience are greatly appreciated as I strive to enhance the application and provide a better experience for users.
