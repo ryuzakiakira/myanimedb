@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToList, removeFromList } from "../../features/lists/animeListSlice";
+import { addToMangaList, removeFromMangaList } from "../../features/lists/mangaListSlice";
 import Card from "./Card";
 import classes from "./SummaryPage.module.css";
 import ContentList from "../lists/ContentList";
@@ -10,7 +11,8 @@ function SummaryPage({ data, id }) {
   const location = useLocation();
   const isMangaRoute = location.pathname.includes("/manga");
   const dispatch = useDispatch();
-  const animeList = useSelector(state => state.list);
+  const animeList = useSelector(state => state.animeList.list);
+  const mangaList = useSelector(state => state.mangaList.list);
 
   const [recommendation, setRecommendation] = useState([]);
   const [buttonText, setButtonText] = useState("Add to list");
@@ -37,14 +39,14 @@ function SummaryPage({ data, id }) {
     const type = isMangaRoute ? "manga" : "anime";
     fetchData(id, type);
 
-    const isButtonClicked = animeList.some(anime => anime.id === id);
+    const isButtonClicked = animeList.some(anime => anime.id === id) || mangaList.some(manga => manga.id === id);
     setButtonClicked(isButtonClicked);
 
     if (isButtonClicked) {
       setButtonText("Remove from list");
     } 
 
-  }, [id, isMangaRoute, animeList]);
+  }, [id, isMangaRoute, animeList, mangaList]);
 
   const renderDetails = () => {
     const details = data.studios?.[0] ||
@@ -79,13 +81,21 @@ function SummaryPage({ data, id }) {
     const newItem = { id, type: data.type, title: data.title, img: data.images.jpg.image_url };
 
     if (!buttonClicked) {
-      dispatch(addToList(newItem));
+      if (isMangaRoute) {
+        dispatch(addToMangaList(newItem));
+      } else {
+        dispatch(addToList(newItem));
+      }
       setButtonText("Remove from list");
       setButtonClicked(true);
     }
 
     if (buttonClicked) {
-      dispatch(removeFromList({id: newItem.id}));
+      if (isMangaRoute) {
+        dispatch(removeFromMangaList({id: newItem.id}));
+      } else {
+        dispatch(removeFromList({id: newItem.id}));
+      }
       setButtonText("Add to list");
       setButtonClicked(false);
     }
