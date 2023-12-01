@@ -28,9 +28,6 @@ Welcome to MyAnimeDB, your personalized anime and manga tracking web application
 - All data is stored locally in your browser's local storage.
 - Your lists and preferences are secure, and no data is sent anywhere.
 
-## Planned Features
-- Functionality to store lists in browser's local storage.
-
 ## Getting Started
 1. Clone the repository: `git clone https://github.com/wantingCat/myanimedb.git`
 2. Navigate to the project directory: `cd myanimedb`

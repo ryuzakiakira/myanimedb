@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const prevList = JSON.parse(localStorage.getItem("mangaList"));
+
+let initialState = {
     list: []
+}
+
+if (prevList) {
+    initialState.list = prevList;
 }
 
 export const mangaListSlice = createSlice({
@@ -16,9 +22,11 @@ export const mangaListSlice = createSlice({
                 img: action.payload.img
             }
             state.list.push(listItem);
+            localStorage.setItem("mangaList", JSON.stringify(state.list));
         },
         removeFromMangaList: (state, action) => {
             state.list = state.list.filter((manga) => manga.id !== action.payload.id);
+            localStorage.setItem("mangaList", JSON.stringify(state.list));
         },
     },
 });
