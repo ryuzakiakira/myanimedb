@@ -19,7 +19,6 @@ Welcome to MyAnimeDB, your personalized anime and manga tracking web application
 ### List Tab
 - Manage your own anime and manga lists.
 - Click on any list item to see detailed information.
-- Future plan: Implement a manga list section.
 
 ### Details Page
 - Access detailed information about a selected anime or manga.
@@ -30,7 +29,6 @@ Welcome to MyAnimeDB, your personalized anime and manga tracking web application
 - Your lists and preferences are secure, and no data is sent anywhere.
 
 ## Planned Features
-- Manga list section inside Lists tab.
 - Functionality to store lists in browser's local storage.
 
 ## Getting Started
