@@ -145,6 +145,9 @@ function MainNavigation() {
               <li>
                 <a href="/manga">Manga</a>
               </li>
+              <li>
+                <a href="/list">List</a>
+              </li>
               <li>{searchField}</li>
             </ul>
           </div>
